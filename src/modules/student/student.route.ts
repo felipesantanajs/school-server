@@ -1,8 +1,9 @@
 import { FastifyInstance } from "fastify";
-import registerStudentHandler from "./student.controller";
+import { findStudentHandler, registerStudentHendler, removeStudentHandler } from "./student.controller";
 
 export default async function studentsRoutes(server:FastifyInstance){
 
-  server.post('/create', registerStudentHandler)
-
+  server.post('/create', registerStudentHendler)
+  server.get('/:id', findStudentHandler)
+  server.post('/remove/:id', removeStudentHandler)
 } 

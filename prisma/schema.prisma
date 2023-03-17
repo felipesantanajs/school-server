@@ -35,6 +35,6 @@ model Discipline {
   name        String
   class       Class     @relation(fields: [classId], references: [id])
   classId     Int
-  professor   Professor @relation(fields: [professorId], references: [id])
+  professor   Professor @relation(fields: [professorId], references: [id], onDelete: Cascade)
   professorId Int
 }

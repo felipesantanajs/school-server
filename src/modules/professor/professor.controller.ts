@@ -1,6 +1,6 @@
 import {FastifyReply, FastifyRequest } from "fastify";
-import { createProfessor, searchProfessor } from "./professor.server";
-import { CreateProfessorSchema } from "./professor.schema";
+import { createProfessor, removeProfessor, searchProfessor } from "./professor.server";
+import { CreateProfessorSchema,SearchProfessorSchema } from "./professor.schema";
 
 export async function registerProfessorHandler(
   request: FastifyRequest<{ Body: CreateProfessorSchema}>, 
@@ -16,14 +16,28 @@ export async function registerProfessorHandler(
   }
 }
 
-export async function searchProfessorHandler(request: FastifyRequest, reply: FastifyReply){
+export async function searchProfessorHandler(request: FastifyRequest<{Params:SearchProfessorSchema}>, reply: FastifyReply){
+
+    const id = request.params
 
     try{
-      const getProfessor = await searchProfessor()
-
+      const getProfessor = await searchProfessor(id)
       return reply.status(200).send(getProfessor)
     }catch(err){
       console.log(err)
       return reply.status(500).send(err)
     }
+}
+
+export async function removeProfessorHandler(request: FastifyRequest<{Params:SearchProfessorSchema}>, reply: FastifyReply){
+
+  const id = request.params
+  
+  try{
+    const professor = await removeProfessor(id)
+    reply.send({ message: 'Professor removido com sucesso!' });
+  }catch(err){
+    console.log(err)
+    return reply.status(500).send(err)
+  }
 }

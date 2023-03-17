@@ -1,5 +1,5 @@
 import {FastifyReply, FastifyRequest } from "fastify";
-import { createGroup, searchGroup } from "./group.server";
+import { createCompleteGroup, createGroup, searchGroup } from "./group.server";
 import { CreateGroupSchema } from "./group.schema";
 
 export async function registerGroupHandler(
@@ -15,7 +15,21 @@ export async function registerGroupHandler(
     reply.status(500).send(err)
   }
 }
+export async function registerGroupCompleteHandler(
+  request: FastifyRequest<{ Body: CreateGroupSchema}>, 
+  reply: FastifyReply){
+  
+  const body = request.body
 
+  try{
+    const group = await createCompleteGroup(body)
+    return reply.status(201).send(group)
+   
+  }catch(err){
+    console.log(err)
+    reply.status(500).send(err)
+  }
+}
 export async function searchGroupHandler(
   request: FastifyRequest, 
   reply: FastifyReply){

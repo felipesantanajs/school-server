@@ -1,8 +1,9 @@
 import { FastifyInstance } from "fastify";
-import { registerGroupHandler, searchGroupHandler } from "./group.controller";
+import { registerGroupCompleteHandler, registerGroupHandler, searchGroupHandler } from "./group.controller";
 
 export default async function groupRoutes(server:FastifyInstance){
   server.post('/create', registerGroupHandler)
+  server.post('/create/complete', registerGroupCompleteHandler)
   server.get('/search', searchGroupHandler)
 }
 

@@ -21,7 +21,7 @@ $ cd school-server
 $ npm install
 
 $ Banco de Dados utilziado foi o Postgress
-- Ultilizei ele no https://railway.app/, lá tenho 200h gratuitas para testes.
+- Utilizei ele no https://railway.app/, lá tenho 200h gratuitas para testes.
 
 OBS: 
 Na questão do banco de dados necessario criar um arquivo .env na raiz do projeto colocar a seguinte varivel de ambiente:

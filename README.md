@@ -20,12 +20,12 @@ $ cd school-server
 # Instale as dependências
 $ npm install
 
-$ Banco de Dados utilziado foi o Postgress
+$ Banco de Dados utilziado foi o Postgresql
 - Utilizei ele no https://railway.app/, lá tenho 200h gratuitas para testes.
 
 OBS: 
 Na questão do banco de dados necessario criar um arquivo .env na raiz do projeto colocar a seguinte varivel de ambiente:
-DATABASE_URL="postgresql://postgres:...(Link de acesso ao banco de dados do postgress)"
+DATABASE_URL="postgresql://postgres:...(Link de acesso ao banco de dados do postgresql)"
 
 # Execute a aplicação em modo de desenvolvimento
 $ npm run dev
@@ -41,3 +41,4 @@ Obs: Na pasta src/modules tem as pasta de cada ação, lá encontrará as rotas 
 - Fastify 
 - Prisma
 - Zod
+- DB PostgreSQL
